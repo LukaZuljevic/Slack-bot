@@ -1,5 +1,6 @@
 const formatMessage = (message) => {
-  const itemNumber = message.split(" ")[0];
+  const parts = message.trim().split(" ");
+  const itemNumber = parts[0];
   let error = null;
 
   if (isNaN(itemNumber))
@@ -9,7 +10,7 @@ const formatMessage = (message) => {
   if (itemNumber < 1 || itemNumber > 25)
     error = "Enter a number between 1 and 25";
 
-  const itemContent = message.split(" ").slice(1).join(" ");
+  const itemContent = parts.slice(1).join(" ");
 
   return { itemNumber, itemContent, error };
 };
